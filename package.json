@@ -2,10 +2,9 @@
   "name": "ide-yml",
   "version": "0.7.4-0",
   "description": "Atom-IDE support for YAML language",
-  "main": "./dist/main",
+  "main": "./lib/main",
   "scripts": {
-    "publish": "apm publish prepatch",
-    "build": "tsc"
+    "publish": "apm publish prepatch"
   },
   "repository": "https://github.com/ziqiln/ide-yaml.git",
   "keywords": [
@@ -16,6 +15,13 @@
     "language-server-protocol",
     "outline-view"
   ],
+  "configSchema": {
+    "testingValue": {
+      "type": "boolean",
+      "default": true,
+      "description": "Testing Value"
+    }
+  },
   "author": {
     "name": "Jakub Olan"
   },
