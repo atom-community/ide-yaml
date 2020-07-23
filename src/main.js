@@ -1,32 +1,49 @@
-const path = require('path')
-const { AutoLanguageClient } = require('atom-languageclient')
-const { registerHelpCommands } = require('./help_cmd')
-const { checkRequirementsThenWelcome } = require('./welcome_notification')
+const path = require("path");
+const { AutoLanguageClient } = require("atom-languageclient");
 
+// Class that stands for extension
 class YAMLLanguageClient extends AutoLanguageClient {
   constructor() {
-    super()
-    registerHelpCommands()
-    checkRequirementsThenWelcome()
+    super();
   }
-  getGrammarScopes () { return ['source.yaml'] }
-  getLanguageName () { return 'YAML' }
-  getServerName () { return 'REDHAT-YAML-LANG-SERVER' }
-  getConnectionType() { return 'stdio' } // ipc, socket, stdio
 
-  startServerProcess () {
+  // ?
+  getGrammarScopes() {
+    return ["source.yaml"];
+  }
+
+  // Provides language name for Atom
+  getLanguageName() {
+    return "YAML";
+  }
+
+  // Provides language server name for languageclient
+  getServerName() {
+    return "REDHAT-YAML-LANG-SERVER";
+  }
+
+  // Connection type
+  getConnectionType() {
+    return "stdio";
+  }
+
+  // Starts languageserver
+  startServerProcess() {
     return super.spawnChildNode([
       path.join(
         __dirname,
-        '../node_modules/yaml-language-server/out/server/src/server.js'
+        "../node_modules/yaml-language-server/out/server/src/server.js"
       ),
-      '--stdio',
-    ]) // --node-ipc, stdio, socket={number}
+      "--stdio"
+    ]);
   }
 
-  preInitialization (connection) {
-    connection.onCustom('$/partialResult', () => {}) // Suppress partialResult until the language server honours 'streaming' detection
+  // TODO: Autocompletion based on YAML schema provided in $schema key.
+
+  // idk
+  preInitialization(connection) {
+    connection.onCustom("$/partialResult", () => {}); // Suppress partialResult until the language server honours 'streaming' detection
   }
 }
 
-module.exports = new YAMLLanguageClient()
+module.exports = new YAMLLanguageClient();
