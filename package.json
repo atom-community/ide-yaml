@@ -1,5 +1,5 @@
 {
-  "name": "ide-yaml",
+  "name": "ide-yml",
   "version": "0.7.3-0",
   "description": "Atom-IDE support for YAML language",
   "main": "src/main.js",
