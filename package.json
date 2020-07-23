@@ -4,8 +4,7 @@
   "description": "Atom-IDE support for YAML language",
   "main": "src/main.js",
   "scripts": {
-    "lint": "eslint src/",
-    "test": "npm run lint"
+    "publish": "apm publish prepatch"
   },
   "repository": "https://github.com/ziqiln/ide-yaml.git",
   "keywords": [
