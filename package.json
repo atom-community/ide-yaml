@@ -2,9 +2,10 @@
   "name": "ide-yml",
   "version": "0.7.4-0",
   "description": "Atom-IDE support for YAML language",
-  "main": "src/main.js",
+  "main": "./dist/main",
   "scripts": {
-    "publish": "apm publish prepatch"
+    "publish": "apm publish prepatch",
+    "build": "tsc"
   },
   "repository": "https://github.com/ziqiln/ide-yaml.git",
   "keywords": [
@@ -16,7 +17,7 @@
     "outline-view"
   ],
   "author": {
-    "name": "Te-Chi Liu"
+    "name": "Jakub Olan"
   },
   "license": "MIT",
   "bugs": {
@@ -24,6 +25,8 @@
   },
   "homepage": "https://github.com/ziqiln/ide-yaml#readme",
   "devDependencies": {
+    "@araclx/tsconfig": "^1.0.0",
+    "@types/node": "^14.0.24",
     "eslint": "^6.0.0"
   },
   "dependencies": {

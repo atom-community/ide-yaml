@@ -1,5 +1,5 @@
-const path = require("path");
-const { AutoLanguageClient } = require("atom-languageclient");
+import { require } from "path";
+import { AutoLanguageClient } from "atom-languageclient";
 
 // Class that stands for extension
 class YAMLLanguageClient extends AutoLanguageClient {
@@ -19,26 +19,20 @@ class YAMLLanguageClient extends AutoLanguageClient {
 
   // Provides language server name for languageclient
   getServerName() {
-    return "REDHAT-YAML-LANG-SERVER";
-  }
-
-  // Connection type
-  getConnectionType() {
-    return "stdio";
+    return "RedHat YAML Language Server";
   }
 
   // Starts languageserver
   startServerProcess() {
     return super.spawnChildNode([
-      path.join(
-        __dirname,
-        "../node_modules/yaml-language-server/out/server/src/server.js"
-      ),
-      "--stdio"
+      require.resolve("yaml-language-server/bin/yaml-language-server")
     ]);
   }
 
   // TODO: Autocompletion based on YAML schema provided in $schema key.
+  AutocompleteAdapter() {}
+
+  // TODO: Settings in Atom packages
 
   // idk
   preInitialization(connection) {
